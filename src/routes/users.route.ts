@@ -21,3 +21,5 @@ router
   
   // add order
   .post("/:id/orders", userController.addOrder);
+
+export default router;
