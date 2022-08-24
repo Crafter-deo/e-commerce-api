@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 import config from "../config/index";
-//import database from config/index.ts
 
 const connect = async () => {
   try {
-    mongoose.connect(config.DB_URI);
+    await mongoose.connect(config.MONGODB_URI!);
+    console.log("Database connected");
   } catch (err) {
     console.log(err);
     process.exit(1);
