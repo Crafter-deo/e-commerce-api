@@ -9,4 +9,14 @@ export const getProduct = (req: Request, res: Response) => {
   res.json({ message: "success" });
 };
 
+export const addProduct = async (req: Request, res: Response) => {
+  res.json({ message: "success" });
+};
 
+export const updateProduct = async (req: Request, res: Response) => {
+  res.json({ message: "success" });
+};
+
+export const deleteProduct = async (req: Request, res: Response) => {
+  res.json({ message: "success" });
+};
