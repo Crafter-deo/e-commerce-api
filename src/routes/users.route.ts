@@ -3,8 +3,8 @@ import * as userController from "../controllers/user.controller";
 
 const router = Router();
 
-// get users
 router
+  // get users
   .get("/", userController.getUsers)
 
   // get a user
@@ -18,7 +18,7 @@ router
 
   // add to shopping cart
   .post("/:id/cart", userController.addToCart)
-  
+
   // add order
   .post("/:id/orders", userController.addOrder);
 
