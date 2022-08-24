@@ -1,4 +1,5 @@
 import userModel from "../../models/user.model";
+import log from "../../utils/logger";
 
 const adminSeeder = async () => {
   const existingAdmin = await userModel.findOne({ role: "admin" });
@@ -10,11 +11,11 @@ const adminSeeder = async () => {
       passwordConfirmation: process.env.ADMIN_PASSWORD,
       role: "admin",
     });
-    console.log("Admin account created");
+    log.info("Admin account created");
     return;
   }
 
-  console.log("Admin account exists");
+  log.info("Admin account exists");
   return;
 };
 
