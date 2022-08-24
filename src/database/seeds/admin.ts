@@ -1,14 +1,13 @@
-import userModel from "../models/user.model";
-import config from "../config/index";
+import userModel from "../../models/user.model";
 
 const adminSeeder = async () => {
   const existingAdmin = await userModel.findOne({ role: "admin" });
   if (!existingAdmin) {
     await userModel.create({
       name: "Admin",
-      email: config.ADMIN_EMAIL,
-      password: config.ADMIN_PASSWORD,
-      passwordConfirmation: config.ADMIN_PASSWORD,
+      email: process.env.ADMIN_EMAIL,
+      password: process.env.ADMIN_PASSWORD,
+      passwordConfirmation: process.env.ADMIN_PASSWORD,
       role: "admin",
     });
     console.log("Admin account created");
@@ -18,3 +17,5 @@ const adminSeeder = async () => {
   console.log("Admin account exists");
   return;
 };
+
+export default adminSeeder;
