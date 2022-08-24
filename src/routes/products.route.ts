@@ -3,11 +3,11 @@ import * as productController from "../controllers/products.controller";
 
 const router = Router();
 
-// get users
 router
+  //get products
   .get("/", productController.getProducts)
 
-  // get a user
+  //get a product
   .get("/:id", productController.getProduct);
 
 export default router;
