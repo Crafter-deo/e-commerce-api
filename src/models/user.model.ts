@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import bcrypt from "bcrypt";
 
 export const UserSchema = new Schema(
   {
@@ -8,6 +9,7 @@ export const UserSchema = new Schema(
     },
     email: {
       type: String,
+      lower: true,
       required: true,
     },
     password: {
@@ -18,6 +20,10 @@ export const UserSchema = new Schema(
       type: String,
       required: true,
     },
+    verified: {
+      type: Boolean,
+      default: false,
+    },
     role: {
       type: String,
       required: true,
@@ -27,5 +33,15 @@ export const UserSchema = new Schema(
   },
   { timestamps: true }
 );
+
+
+// mongodb pre-hook
+UserSchema.pre("save", function (next) {
+  const user = this;
+  if (!user.isModified("password")) return next();
+  user.password = bcrypt.hashSync(user.password, 12);
+  next();
+});
+
 
 export default model("User", UserSchema);
