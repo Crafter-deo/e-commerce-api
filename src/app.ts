@@ -1,10 +1,10 @@
 import express from "express";
 import connect from "./database/index";
 import config from "./config/index";
-import adminSeeder from "./database/seeds/admin";
 import authRoutes from "./routes/auth.route";
 import userRoutes from "./routes/users.route";
 import productRoutes from "./routes/products.route";
+import log from "./utils/logger";
 
 const app = express();
 
@@ -14,7 +14,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 
 app.listen(config.PORT, async () => {
-  console.log("App is running");
+  log.info("App is running");
   await connect();
-  await adminSeeder();
 });
